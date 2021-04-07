@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import AccordionItem from "./AccordionItem";
 
 const Accordion = ({ questionsAnswers }) => {
+    let showDescription, fontWeightBold, ariaExpanded;
     const [activeIndex, setActiveIndex] = useState(1);
 
     const renderedQuestionsAnswers = questionsAnswers.map((item, index) => {
-        const showDescription = index === activeIndex ? "show-description" : "";
-        const fontWeightBold = index === activeIndex ? "font-weight-bold" : "";
-        const ariaExpanded = index === activeIndex ? "true" : "false";
+        if(index === activeIndex){
+            showDescription = "show-description";
+            fontWeightBold = "font-weight-bold";
+            ariaExpanded = "true";
+        }
+        else{
+            showDescription = "";
+            fontWeightBold = "";
+            ariaExpanded = "false";
+        }
         return (
             <AccordionItem
                 showDescription={showDescription}
